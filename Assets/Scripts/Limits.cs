@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class Limits
+public struct Limits
 {
     public Limits (int min, int max)
     {

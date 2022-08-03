@@ -72,11 +72,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _cooldown: 0.15
   _damage: 20
+  _cooldownTime: 0.15
+  _fireDistance: 100
   _fireClip: {fileID: 7400000, guid: e9e16c3c85546401aa5c8014ba2f60bf, type: 2}
   _bulletSpawn: {fileID: 8861965472645299578}
-  _bulletPrefab: {fileID: 6504725494166837456, guid: 9fe285a06f95a491bb8d2efb69150e14, type: 3}
 --- !u!1001 &7948268514427482240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,6 +160,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 19.719927
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: d0a81efc0900c6f4aa279bac78407162, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05af3f0ba7044ae48afd62f9f5d6d07e, type: 2}
+    - target: {fileID: 2300002, guid: d0a81efc0900c6f4aa279bac78407162, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05af3f0ba7044ae48afd62f9f5d6d07e, type: 2}
+    - target: {fileID: 2300004, guid: d0a81efc0900c6f4aa279bac78407162, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05af3f0ba7044ae48afd62f9f5d6d07e, type: 2}
+    - target: {fileID: 2300006, guid: d0a81efc0900c6f4aa279bac78407162, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05af3f0ba7044ae48afd62f9f5d6d07e, type: 2}
+    - target: {fileID: 2300008, guid: d0a81efc0900c6f4aa279bac78407162, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05af3f0ba7044ae48afd62f9f5d6d07e, type: 2}
     m_RemovedComponents:
     - {fileID: 9500000, guid: d0a81efc0900c6f4aa279bac78407162, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d0a81efc0900c6f4aa279bac78407162, type: 3}

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class Receiver<T> : MonoBehaviour
+public abstract class Receiver<T> : MonoBehaviour, IRestorable
 {
     public Action<T> onUpdate;
 

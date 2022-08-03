@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+namespace Weapons
 {
-    [SerializeField] private float _speed = 1000;
-    
-    private void Update()
+    public class Bullet : MonoBehaviour
     {
-        transform.position -= transform.up * _speed * Time.deltaTime;
-    }
+        [SerializeField] private float _speed = 1000;
 
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
+        private void Update()
+        {
+            transform.position -= transform.up * _speed * Time.deltaTime;
+        }
+
+        private void OnBecameInvisible()
+        {
+            Destroy(gameObject);
+        }
     }
 }

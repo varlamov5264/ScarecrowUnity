@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class InteractionHandler : MonoBehaviour
+public abstract class InteractionHandler : MonoBehaviour, IRestorable
 {
     protected DamageReceiver _damageReceiver;
     protected FireReceiver _fireReceiver;

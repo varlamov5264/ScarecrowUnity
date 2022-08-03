@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TestRoom : MonoBehaviour
 {
-    private Scarecrow _currentEnemy;
+    private IRestorable _restorableEnemy;
 
     private void Start()
     {
@@ -13,15 +13,15 @@ public class TestRoom : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (_currentEnemy)
-                _currentEnemy.Restore();
-            else
+            if (_restorableEnemy.Equals(null))
                 CreateEnemy();
+            else
+                _restorableEnemy.Restore();
         }
     }
 
     private void CreateEnemy()
     {
-        _currentEnemy = ObjectLibrary.Instance.CreateScarecrow();
+        _restorableEnemy = ObjectFactory.Instance.CreateScarecrow();
     }
 }

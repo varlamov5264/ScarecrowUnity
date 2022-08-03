@@ -1,24 +1,25 @@
+using System;
 using UnityEngine;
 
 namespace Weapons
 {
     public abstract class Weapon : Item
     {
-        [SerializeField] private float _cooldown;
-        private float _timer;
-
+        public Action onFire;
+        
         private void Update()
         {
             if (InHand)
             {
-                _timer = Mathf.MoveTowards(_timer, 0, Time.deltaTime);
-                if (Input.GetKeyDown(_interactKey) && _timer == 0)
+                if (Input.GetKeyDown(_interactKey) && FireCondition())
                 {
                     Fire();
-                    _timer = _cooldown;
+                    onFire?.Invoke();
                 }
             }
         }
+
+        protected virtual bool FireCondition() => true;
 
         protected abstract void Fire();
     }
