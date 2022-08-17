@@ -1,12 +1,30 @@
 using UnityEngine;
 
-public class EnemyBarUI : InteractionHandler
+public class EnemyBarUI : MonoBehaviour
 {
-    [SerializeField] private InteractionHandler _enemy;
+    [SerializeField] private Scarecrow _enemy;
     [SerializeField] private UIBar _hpBar;
     [SerializeField] private UIBar _waterBar;
+    private DamageReceiver _damageReceiver;
+    private FireReceiver _fireReceiver;
+    private WaterReceiver _waterReceiver;
 
-    protected override InteractionHandler InteractionObject => _enemy;
+    private void Awake()
+    {
+        _damageReceiver = _enemy.GetComponent<DamageReceiver>();
+        _fireReceiver = _enemy.GetComponent<FireReceiver>();
+        _waterReceiver = _enemy.GetComponent<WaterReceiver>();
+    }
+
+    private void OnEnable()
+    {
+        if (_damageReceiver)
+            _damageReceiver.onUpdate += UpdateHP;
+        if (_fireReceiver)
+            _fireReceiver.onUpdate += Fire;
+        if (_waterReceiver)
+            _waterReceiver.onUpdate += Water;
+    }
 
     private void Start()
     {
@@ -16,9 +34,19 @@ public class EnemyBarUI : InteractionHandler
         Water(_waterReceiver.Value);
     }
 
-    protected override void UpdateHP(int hp) =>_hpBar.SetValue(hp);
+    private void UpdateHP(int hp) =>_hpBar.SetValue(hp);
 
-    protected override void Fire(bool status) => _hpBar.SetColor(status ? Color.red : Color.white);
+    private void Fire(bool status) => _hpBar.SetColor(status ? Color.red : Color.white);
 
-    protected override void Water(int water) => _waterBar.SetValue(water);
+    private void Water(int water) => _waterBar.SetValue(water);
+
+    private void OnDisable()
+    {
+        if (_damageReceiver)
+            _damageReceiver.onUpdate -= UpdateHP;
+        if (_fireReceiver)
+            _fireReceiver.onUpdate -= Fire;
+        if (_waterReceiver)
+            _waterReceiver.onUpdate -= Water;
+    }
 }

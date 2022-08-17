@@ -22,14 +22,12 @@ public abstract class Item : MonoBehaviour, IItem
 
     public virtual void Drop()
     {
+        if (!IsAvailible)
+            return;
         if (_type == Type.Default)
-        {
             DropFromHand();
-        }
         else if (_type == Type.Copyable)
-        {
             Destroy(gameObject);
-        }
     }
 
     protected void DropFromHand()
@@ -37,11 +35,14 @@ public abstract class Item : MonoBehaviour, IItem
         _action = false;
         _inHand = false;
         transform.SetParent(null);
-        gameObject.AddComponent<Rigidbody>();
+        if (!TryGetComponent(out Rigidbody rigidbody))
+            gameObject.AddComponent<Rigidbody>();
     }
 
     public virtual IItem PickUp(Transform target, KeyCode interactKey)
     {
+        if (InHand)
+            return null;
         if (_type == Type.Default)
         {
             SetPreference(target, interactKey);

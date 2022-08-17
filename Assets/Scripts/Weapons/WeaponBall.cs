@@ -12,10 +12,7 @@ namespace Weapons
             DropFromHand();
             _droped = true;
             _isAvailible = false;
-            if (TryGetComponent(out Rigidbody rigidbody))
-            {
-                rigidbody.AddForce(transform.forward - transform.up * _dropForce);
-            }
+            GetComponent<Rigidbody>().AddForce(transform.forward - transform.up * _dropForce);
         }
 
         private void OnCollisionEnter(Collision collision)
